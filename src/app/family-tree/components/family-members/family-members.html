@@ -1,0 +1,22 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Member ID</th>
+            <th>Name</th>
+            <th>Date of Birth</th>
+            <th>Gender</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (member of familyMemberModel; track member._id) {
+        <tr>
+            <td><strong>{{ member._id }}</strong></td>
+            <td>{{ member.firstName }}</td>
+            <td>{{ member.birthDate }}</td>
+            <td>{{ member.gender }}</td>
+            <td>Edit</td>
+        </tr>
+        }
+    </tbody>
+</table>
