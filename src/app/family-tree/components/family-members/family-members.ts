@@ -1,20 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import { FamilyTreeService } from '../../services/family-tree';
+import { FamilyTreeService } from '../../services/family-tree-services';
 import { FamilyMemberModel } from '../../models/family-member.model';
 import { CommonModule } from '@angular/common';
+import { Location } from '@angular/common';
+import { NavigationService } from '../../../shared/services/navigation.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatMenuModule } from '@angular/material/menu';
+import { formatDateToReadable } from '../../../shared/utilities/utilities';
 
 
 
 @Component({
   selector: 'app-family-members',
-  imports: [CommonModule],   // 👈 Required
+
+  imports: [CommonModule, MatIconModule, MatButtonModule, MatTableModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatMenuModule],
   templateUrl: './family-members.html',
   styleUrl: './family-members.scss'
 })
 export class FamilyMembers implements OnInit {
   familyMemberModel: any;
 
-  constructor(private itemService: FamilyTreeService) { }
+  constructor(private itemService: FamilyTreeService, private navigationService: NavigationService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.itemService.getFamilyMembers().subscribe({
@@ -24,7 +36,7 @@ export class FamilyMembers implements OnInit {
         this.familyMemberModel = data
           .map(member => ({
             ...member,
-            birthDate: member.birthDate ? new Date(member.birthDate) : new Date(0), // fallback to epoch if missing
+            birthDate: formatDateToReadable(member.birthDate || ''),
             firstName: member.firstName || '',
             lastName: member.lastName || '',
             generation: member.generation || '',
@@ -36,6 +48,34 @@ export class FamilyMembers implements OnInit {
       },
       error: (err) => console.error('Error fetching familyMemberModel', err)
     });
+  }
+
+  viewDetails(memberId: string) {
+    this.router.navigate([memberId], { relativeTo: this.route });
+  }
+
+  editMemeber(memberId: string) {
+    this.router.navigate([memberId, 'edit'], { relativeTo: this.route });
+  }
+
+  deteleteMember(memberId: string) {
+    // if (confirm('Are you sure you want to delete this member?')) {
+    //   this.itemService.deleteFamilyMember(memberId).subscribe({
+    //     next: () => {
+    //       // Refresh the list after deletion
+    //       this.familyMemberModel = this.familyMemberModel.filter((member: FamilyMemberModel) => member._id !== memberId);
+    //     },
+    //     error: (err) => console.error('Error deleting member', err)
+    //   });
+    // }
+  }
+
+  goBack(): void {
+    this.navigationService.goBack(); // Navigates to the previous route
+  }
+
+  addMember() {
+    this.router.navigate(['add-new-family-member'], { relativeTo: this.route });
   }
 
   formatBirthDate(dateString: string | Date): string {

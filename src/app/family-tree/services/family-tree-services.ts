@@ -16,4 +16,8 @@ export class FamilyTreeService {
      return this.http.get<FamilyMemberModel[]>(this.apiUrl);
   }
 
+  registerNewFamilyMember(familyMemberModel: FamilyMemberModel): Observable<any> {
+    return this.http.post<FamilyMemberModel>(this.apiUrl, familyMemberModel);
+  }
+
 }

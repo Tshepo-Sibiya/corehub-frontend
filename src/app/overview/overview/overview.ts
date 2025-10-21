@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
 
 
@@ -13,7 +15,7 @@ interface ModuleCard {
 
 @Component({
   selector: 'app-overview',
-  imports: [],
+  imports: [MatIconModule, MatButtonModule],
   templateUrl: './overview.html',
   styleUrl: './overview.scss'
 })
@@ -24,6 +26,8 @@ export class Overview {
   navigateTo(path: string) {
     this.router.navigate([path]);
   }
+
+  logout() { }
 
 
 

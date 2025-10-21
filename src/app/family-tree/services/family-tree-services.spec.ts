@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { FamilyTree } from './family-tree';
+import { FamilyTreeService } from './family-tree-services';
 
 describe('FamilyTree', () => {
-  let service: FamilyTree;
+  let service: FamilyTreeService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(FamilyTree);
+    service = TestBed.inject(FamilyTreeService);
   });
 
   it('should be created', () => {

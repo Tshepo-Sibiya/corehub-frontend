@@ -1,1 +1,108 @@
-<p>add-family-member works!</p>
+<div class="overview-container">
+
+    <div class="row g-1 justify-content-center">
+        <div class="col-md-12 col-lg-5 d-flex flex-column align-items-left">
+            <div style="margin-bottom: 30px;;"> <button mat-stroked-button color="primary" (click)="goBack()"> ← Back
+                </button></div>
+            <!-- Login Card -->
+            <div class="card shadow-sm border-3 w-100" style="min-height: 300px;">
+
+                <div class="card-body d-flex flex-column justify-content-center align-items-center text-center p-4">
+
+                    <i class="bi bi-person-circle fs-1 text-primary mb-3"></i>
+                    <h3 class="mb-4">Add New Family Memeber</h3>
+
+                    <form [formGroup]="registerMemberForm" class="w-100">
+
+                        <div class="mb-3 text-start">
+                            <!-- <label for="email" class="form-label">User Type:</label> -->
+
+
+
+
+                            <!-- <input type="email" id="email" class="form-control" placeholder="Enter your email"
+                                formControlName="email"> -->
+                        </div>
+
+                        <div class="mb-3 text-start">
+                            <label for="firstName" class="form-label">Full names:</label>
+                            <input type="text" id="firstName" class="form-control" formControlName="firstName"
+                                placeholder="Enter name">
+                        </div>
+
+
+                        <div class="mb-3 text-start">
+                            <label for="gender" class="form-label">Gender</label>
+                            <div class="dropdown">
+                                <button class="btn btn-outline-secondary dropdown-toggle w-100 text-start" type="button"
+                                    id="genderDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    {{ registerMemberForm.get('gender')?.value || 'Select Gender' }}
+                                </button>
+                                <ul class="dropdown-menu w-100" aria-labelledby="genderDropdown">
+                                    <li *ngFor="let g of genders">
+                                        <a class="dropdown-item" href="javascript:void(0)" (click)="setGender(g)">
+                                            {{ g }}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                        <div class="mb-3 text-start">
+                            <label for="birthDate" class="form-label">Date of birth:</label>
+                            <div class="mb-3">
+                                <input type="date" id="birthDate" class="form-control" formControlName="birthDate">
+                            </div>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="isalive" formControlName="isalive" />
+                            <label class="form-check-label" for="isalive">
+                                Mark if this family member is alive
+                            </label>
+                        </div>
+
+
+                        <br>
+
+                        <div class="mb-3 text-start">
+                            <label for="generation" class="form-label">Generation</label>
+                            <input type="number" id="generation" class="form-control" formControlName="generation"
+                                placeholder="Enter generation">
+                        </div>
+
+
+                        <div class="mb-3 text-start">
+                            <label for="placeofBirth" class="form-label">Place of birth</label>
+                            <input type="text" id="placeofBirth" class="form-control" formControlName="placeofBirth"
+                                placeholder="Enter place of birth">
+                        </div>
+
+
+                        <!-- <button class="btn btn-primary w-100 mt-3" type="submit"
+                                [disabled]="registerMemberForm.invalid">Submit</button> -->
+
+                        <button class="btn btn-primary w-100 mt-3" mat-stroked-button (click)="submitForm()"
+                            [disabled]="isLoading">
+
+                            @if (isLoading) {
+                            Loading, please wait...
+                            } @else {
+                            Submit
+                            }
+
+                        </button>
+
+                    </form>
+
+                    <!-- <div class="mt-3">
+                            <a href="#" class="text-decoration-none">Forgot Password?</a>
+                        </div> -->
+                </div>
+            </div>
+            <!-- End Login Card -->
+
+        </div>
+    </div>
+</div>

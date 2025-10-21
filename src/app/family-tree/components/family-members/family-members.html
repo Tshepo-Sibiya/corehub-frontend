@@ -1,22 +1,63 @@
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Member ID</th>
-            <th>Name</th>
-            <th>Date of Birth</th>
-            <th>Gender</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        @for (member of familyMemberModel; track member._id) {
-        <tr>
-            <td><strong>{{ member._id }}</strong></td>
-            <td>{{ member.firstName }}</td>
-            <td>{{ member.birthDate }}</td>
-            <td>{{ member.gender }}</td>
-            <td>Edit</td>
-        </tr>
-        }
-    </tbody>
-</table>
+<div style="padding-left:200px; padding-right:200px" >
+    <div style="margin-bottom: 50px;">
+        <button mat-stroked-button (click)="goBack()"> ← Back </button>
+        &nbsp;
+        <button mat-stroked-button (click)="addMember()"> <mat-icon aria-hidden="false" aria-label="Example home icon"
+                fontIcon="add"></mat-icon>Add New Member </button>
+    </div>
+
+
+    <table class="table table-striped" style="width: 100%; table-layout: auto;">
+        <thead>
+            <tr>
+              
+                <th>Name</th>
+                <th>Date of Birth</th>
+                <th>Gender</th>
+                <th style="text-align: right;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (member of familyMemberModel; track member._id) {
+            <tr>
+            
+                <td>{{ member.firstName }}</td>
+                <td>{{ member.birthDate }}</td>
+                <td>{{ member.gender }}</td>
+                <td style="text-align: right;">
+                    <div class="dropdown">
+                        <button class="btn btn-outline-danger dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-bs-toggle="dropdown" aria-expanded="false" style="
+            border-width: 1px; 
+            border-radius: 4px; 
+            color: black; 
+            background-color: transparent; 
+            font-family: Roboto, Arial, sans-serif;
+            font-size: 14px;
+            padding: 0.375rem 0.75rem;
+            line-height: 1.75;
+        ">
+                            Action
+                        </button>
+                        <!-- <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="#">Option 1</a></li>
+                            <li><a class="dropdown-item" href="#">Option 2</a></li>
+                            <li><a class="dropdown-item" href="#">Option 3</a></li>
+                        </ul> -->
+
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="#" onclick="viewDetails('Item 1 clicked')">View details</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#" onclick="alert('Item 2 clicked')">Edit</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="alert('Item 3 clicked')">Delete</a></li>
+                        </ul>
+                    </div>
+
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+
+</div>

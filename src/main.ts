@@ -8,7 +8,8 @@ bootstrapApplication(App, {
   ...appConfig,
   providers: [
     ...(appConfig.providers ?? []),
-    provideHttpClient(withInterceptors([AuthInterceptor]))
+    provideHttpClient(withInterceptors([AuthInterceptor])),
+    
   ]
 })
   .catch((err) => console.error(err));

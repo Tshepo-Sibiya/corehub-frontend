@@ -3,10 +3,12 @@ import { UserServices } from '../../services/user-services';
 import { setAccessToken } from '../../../core/storage';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,MatIconModule, MatButtonModule],
   templateUrl: './login.html',
   styleUrl: './login.scss'
 })
@@ -25,6 +27,7 @@ export class Login {
   loginUser() {
 
     if (this.loginForm.valid) {
+
       const { email, password } = this.loginForm.value;
 
 
@@ -41,6 +44,7 @@ export class Login {
           console.error('Login error:', err);
         }
       });
+
     } else {
       console.log('Form is invalid!');
     }
