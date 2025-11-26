@@ -1,31 +1,32 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { NavigationService } from '../../../shared/services/navigation.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { NavBar } from '../../shared/components/nav-bar/nav-bar';
 
 @Component({
-  selector: 'app-invoicing-overview',
-  imports: [CommonModule,NavBar],
-  templateUrl: './invoicing-overview.html',
-  styleUrl: './invoicing-overview.scss'
+  selector: 'app-invoice-list',
+  imports: [CommonModule, NavBar],
+  templateUrl: './invoice-list.html',
+  styleUrl: './invoice-list.scss'
 })
-export class InvoicingOverview {
+export class InvoiceList {
 
-  activeItem = 'Overview';
+  activeItem = 'Invoices';
   constructor(private navigationService: NavigationService, private router: Router, private route: ActivatedRoute) { }
-
-  goBack(): void {
-    this.navigationService.goBack(); // Navigates to the previous route
-  }
 
   navigate(url: string): void {
     this.navigationService.navigateTo(url); // Navigates to the previous route
   }
 
+
+
   setActive(item: string) {
     this.activeItem = item;
     // this.navigate(item.toLowerCase());
+
+    // this.router.navigate(['invoicing/invoices']);
     this.router.navigate(['invoicing/' + item.toLowerCase()]);
   }
+
 }

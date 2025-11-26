@@ -83,7 +83,7 @@
                         <!-- <button class="btn btn-primary w-100 mt-3" type="submit"
                                 [disabled]="registerMemberForm.invalid">Submit</button> -->
 
-                        <button class="btn btn-primary w-100 mt-3" mat-stroked-button (click)="submitForm()"
+                        <button class="btn btn-default w-100 mt-3" mat-stroked-button (click)="submitForm()"
                             [disabled]="isLoading">
 
                             @if (isLoading) {
@@ -93,6 +93,11 @@
                             }
 
                         </button>
+                        @if (isError) {
+                        <br> <br>
+                        <div style="width: 100%; background-color: rgb(192, 79, 79);color: white;padding:5px">
+                            {{responseMessage}}</div>
+                        }
 
                     </form>
 

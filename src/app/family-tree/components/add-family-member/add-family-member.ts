@@ -6,16 +6,17 @@ import { NavigationService } from '../../../shared/services/navigation.service';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { generate } from 'rxjs';
+
 import { FamilyMemberModel } from '../../models/family-member.model';
 import { getTodayDate } from '../../../shared/utilities/utilities';
-import { timer, switchMap } from 'rxjs';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { timer, switchMap, finalize } from 'rxjs';
 
 @Component({
   selector: 'app-add-family-member',
 
-  imports: [ReactiveFormsModule, CommonModule, MatIconModule, MatButtonModule,MatProgressSpinnerModule],
+  imports: [ReactiveFormsModule, CommonModule, MatIconModule, MatButtonModule, MatProgressSpinnerModule],
   templateUrl: './add-family-member.html',
   styleUrl: './add-family-member.scss'
 })
@@ -27,6 +28,8 @@ export class AddFamilyMember {
   isLoading: boolean = false;
   registerMemberForm: FormGroup;
   genders = ['Male', 'Female', 'Other'];
+  isError: boolean = false;
+  responseMessage: String = '';
 
   constructor(private familyTreeService: FamilyTreeService, private navigationService: NavigationService, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
     this.registerMemberForm = this.fb.group({
@@ -51,30 +54,37 @@ export class AddFamilyMember {
   }
 
   submitForm() {
+    this.isError = false;
+    this.responseMessage = '';
     this.isLoading = true;
     if (this.registerMemberForm.valid) {
       const _values: FamilyMemberModel = this.registerMemberForm.value;
       console.log(_values);
 
-      timer(6000) // wait 15 seconds before making the API call
-        .pipe(
-          switchMap(() => this.familyTreeService.registerNewFamilyMember(_values))
-        )
-        .subscribe({
-          next: (response: any) => {
-            this.isLoading = false;
-            // if (response && response.token) {
-            //   // setAccessToken(response.token);
-            //   this.router.navigate(['/overview']);
-            // }
-          },
-          error: (err: any) => {
-            this.isLoading = false;
-            console.error('Login error:', err);
-          }
-        });
+      this.familyTreeService.registerNewFamilyMember(_values).subscribe({
+        next: (response: any) => {
+          this.isLoading = false;
+          // if (response && response.token) {
+          //   // setAccessToken(response.token);
+          //   this.router.navigate(['/overview']);
+          // }
+        },
+        error: (err: any) => {
+
+          this.isError = true;
+          this.responseMessage = err.error.message;
+          this.isLoading = false;
+          console.error('Login error:', err);
+        },
+        complete: () => {
+          this.isLoading = false;
+        }
+      });
 
     } else {
+      this.isError = true;
+      this.isLoading = false;
+       this.responseMessage = 'Enter all required values.';
       console.log('Form is invalid!');
     }
 

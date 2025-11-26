@@ -1,4 +1,106 @@
-<p>invoicing-overview works!</p>
-<div style="margin-bottom: 50px;">
-    <button type="button" class="btn btn-outline-primary" (click)="goBack()"> ← Back </button> 
+<div class="dashboard-container">
+
+    <app-nav-bar></app-nav-bar>
+    <div class="main-content">
+        <header>
+            <h2>Overview</h2>
+
+        </header>
+        <div class="bar-chart-placeholder">
+            <div class="bar" style="height: 30%;">Jan</div>
+            <div class="bar" style="height: 10%;">Feb</div>
+            <div class="bar" style="height: 20%;">Mar</div>
+            <div class="bar" style="height: 50%;">Apr</div>
+            <div class="bar" style="height: 40%;">May</div>
+            <div class="bar" style="height: 30%;">Jun</div>
+            <div class="bar highlighted" style="height: 80%;">Jul</div>
+            <div class="bar" style="height: 30%;">Aug</div>
+            <div class="bar" style="height: 40%;">Sep</div>
+            <div class="bar" style="height: 10%;">Oct</div>
+            <div class="bar" style="height: 50%;">Nov</div>
+            <div class="bar" style="height: 30%;">Dec</div>
+        </div>
+
+        <div class="metric-cards">
+            <div class="card">
+                <h3>This Month</h3>
+                <div class="value-row">
+                    <div class="value-item">
+                        <strong>€10,215.00</strong>
+                        <span>Invoiced</span>
+                    </div>
+                    <div class="value-item">
+                        <strong>€0.00</strong>
+                        <span>VAT</span>
+                    </div>
+                    <div class="value-item">
+                        <strong>€10,215.00</strong>
+                        <span>Total</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Last Year</h3>
+                <div class="value-row">
+                    <div class="value-item">
+                        <strong>€55,136.00</strong>
+                        <span>Invoiced</span>
+                    </div>
+                    <div class="value-item">
+                        <strong>€970.71</strong>
+                        <span>VAT</span>
+                    </div>
+                    <div class="value-item">
+                        <strong>€56,106.71</strong>
+                        <span>Total</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="list-sections">
+            <div class="list-card">
+                <h3>Top Clients</h3>
+                <ul>
+                    <li>Powlowski Group <span>26.2%</span></li>
+                    <li>Andres Lubowitz <span>6.7%</span></li>
+                    <li>Dickie Group <span>6.5%</span></li>
+                    <li class="other-clients">Other Clients (21) <span>60.6%</span></li>
+                </ul>
+            </div>
+
+            <div class="list-card unpaid-invoices">
+                <h3>4 Unpaid Invoices (€16,479.60)</h3>
+                <div class="invoice-item">
+                    <span>Vogt UG <small>17 days</small></span>
+                    <div class="right-aligned">
+                        <span>€642.60</span>
+                        <input type="checkbox"> Paid
+                    </div>
+                </div>
+                <div class="invoice-item">
+                    <span>Jerde and Sons <small>16 days</small></span>
+                    <div class="right-aligned">
+                        <span>€3,770.00</span>
+                        <input type="checkbox"> Paid
+                    </div>
+                </div>
+                <div class="invoice-item">
+                    <span>Isenkenmeier GmbH <small>15 days</small></span>
+                    <div class="right-aligned">
+                        <span>€2,996.00</span>
+                        <input type="checkbox"> Paid
+                    </div>
+                </div>
+                <div class="invoice-item">
+                    <span>Andres Lubowitz <small>8 days</small></span>
+                    <div class="right-aligned">
+                        <span>€9,071.00</span>
+                        <input type="checkbox"> Paid
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -1,0 +1,75 @@
+<div class="dashboard-container">
+  
+  <app-nav-bar></app-nav-bar>
+    <div class="main-content">
+        <header class="invoice-header">
+            <h2>Invoices (48)</h2>
+            <div class="header-actions">
+                <button class="btn btn-secondary">Filter</button>
+                <button class="btn btn-primary">+ New Invoice</button>
+            </div>
+        </header>
+
+        <div class="search-and-tabs">
+            <input type="text" placeholder="Search invoices..." class="search-input">
+            <div class="status-tabs">
+                <span class="tab active">All (48)</span>
+                <span class="tab">Paid (32)</span>
+                <span class="tab">Pending (12)</span>
+                <span class="tab">Overdue (4)</span>
+            </div>
+        </div>
+
+        <div class="invoice-list-card">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Client</th>
+                        <th>Issue Date</th>
+                        <th>Due Date</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="invoice-number">INV-2025-0048</td>
+                        <td>**Powlowski Group**</td>
+                        <td>Oct 15, 2025</td>
+                        <td>Nov 14, 2025</td>
+                        <td class="amount">€10,215.00</td>
+                        <td><span class="status overdue">Overdue</span></td>
+                        <td>...</td>
+                    </tr>
+                    <tr>
+                        <td class="invoice-number">INV-2025-0047</td>
+                        <td>Andres Lubowitz</td>
+                        <td>Oct 01, 2025</td>
+                        <td>Oct 31, 2025</td>
+                        <td class="amount">€3,770.00</td>
+                        <td><span class="status paid">Paid</span></td>
+                        <td>...</td>
+                    </tr>
+                    <tr>
+                        <td class="invoice-number">INV-2025-0046</td>
+                        <td>**Vogt UG**</td>
+                        <td>Sep 20, 2025</td>
+                        <td>Oct 20, 2025</td>
+                        <td class="amount">€642.60</td>
+                        <td><span class="status pending">Pending</span></td>
+                        <td>...</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="pagination">
+                <span>1-10 of 48 invoices</span>
+                <div class="page-controls">
+                    <button>&lt;</button>
+                    <button>&gt;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

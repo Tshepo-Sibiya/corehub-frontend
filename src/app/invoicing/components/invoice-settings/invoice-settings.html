@@ -1,0 +1,75 @@
+<div class="dashboard-container">
+    <!-- 1. Sidebar / Navigation -->
+    <app-nav-bar></app-nav-bar>
+    <!-- 2. Main Content Area -->
+    <div class="main-content">
+        <h2 class="text-3xl font-semibold mb-6" style="font-size: 1.875rem; font-weight: 600; margin-bottom: 1.5rem;">
+            Settings</h2>
+
+        <!-- Settings Navigation Tabs -->
+        <div class="settings-tabs" id="settings-tabs">
+            <span class="tab active" data-tab="profile">Profile</span>
+            <span class="tab" data-tab="billing">Billing</span>
+            <span class="tab" data-tab="security">Security</span>
+        </div>
+
+        <!-- Content Area - Reactive Form Sample -->
+        <div id="content-profile" class="setting-content">
+            <div class="setting-card">
+                <h3 style="font-size: 1.25rem; font-weight: 500; margin-bottom: 1rem;">User Profile Settings</h3>
+
+                <form onsubmit="event.preventDefault(); alert('Form submitted (Static Demo)');">
+                    <!-- User Name Field -->
+                    <div class="form-group">
+                        <label for="userName" class="form-label">Name</label>
+                        <input id="userName" type="text" value="Jane Doe" class="form-input">
+                        <!-- In a real app, validation errors would appear here -->
+                    </div>
+
+                    <!-- User Email Field -->
+                    <div class="form-group">
+                        <label for="userEmail" class="form-label">Email Address</label>
+                        <input id="userEmail" type="email" value="jane.doe@cakedesk.io" class="form-input">
+                    </div>
+
+                    <!-- Notifications Toggle -->
+                    <div class="form-group" style="display: flex; align-items: center; margin-top: 1rem;">
+                        <input id="notificationsEnabled" type="checkbox" checked class="form-checkbox">
+                        <label for="notificationsEnabled" class="form-label"
+                            style="margin-bottom: 0; margin-left: 0.75rem;">Enable Notifications</label>
+                    </div>
+
+                    <!-- Currency Dropdown -->
+                    <div class="form-group">
+                        <label for="currency" class="form-label">Default Currency</label>
+                        <select id="currency" class="form-input">
+                            <option value="EUR" selected>Euro (€)</option>
+                            <option value="USD">US Dollar ($)</option>
+                            <option value="GBP">Pound Sterling (£)</option>
+                        </select>
+                    </div>
+
+                    <div class="save-area">
+                        <button type="submit" class="btn btn-primary">
+                            Save Changes
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="content-billing" class="setting-content" style="display:none;">
+            <div class="setting-card">
+                <h3 style="font-size: 1.25rem; font-weight: 500; margin-bottom: 1rem;">Billing Information</h3>
+                <p style="color: #6b7280;">This section would contain subscription details and payment methods.</p>
+            </div>
+        </div>
+
+        <div id="content-security" class="setting-content" style="display:none;">
+            <div class="setting-card">
+                <h3 style="font-size: 1.25rem; font-weight: 500; margin-bottom: 1rem;">Security & Access</h3>
+                <p style="color: #6b7280;">This section would manage passwords and multi-factor authentication.</p>
+            </div>
+        </div>
+    </div>
+</div>

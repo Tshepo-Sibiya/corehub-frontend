@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Location } from '@angular/common';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NavigationService {
-  constructor(private location: Location, private router: Router) {}
+  constructor(private location: Location, private router: Router, private route: ActivatedRoute) { }
 
   goBack(fallbackRoute: string = '/dashboard'): void {
     if (window.history.length > 1) {
@@ -14,5 +14,15 @@ export class NavigationService {
     } else {
       this.router.navigate([fallbackRoute]);
     }
+  }
+
+  navigateTo(route: string): void {
+    this.router.navigate([route]);
+  }
+
+
+  navigateRelativeTo(nav: string, relativeTo: any): void {
+    this.router.navigate(['invoicing/invoices']);
+    this.navigateTo(nav);
   }
 }

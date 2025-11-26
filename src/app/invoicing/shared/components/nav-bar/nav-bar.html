@@ -1,0 +1,15 @@
+<div class="sidebar">
+
+
+    <nav class="nav-menu">
+        <ul style="list-style: none; margin: 0; padding: 0;">
+            <li *ngFor="let item of ['Overview','Customers','Invoices','Settings']" [class.active]="activeItem === item"
+                (click)="setActive(item)">
+                {{ item }}
+            </li>
+        </ul>
+
+    </nav>
+    <div class="chat-icon">
+    </div>
+</div>

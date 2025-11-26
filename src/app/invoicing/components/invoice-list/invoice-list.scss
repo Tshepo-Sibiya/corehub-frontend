@@ -1,3 +1,136 @@
+/* Reuse the core layout from the overview screen CSS (.dashboard-container, .sidebar, .main-content) */
+
+.invoice-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header-actions button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.btn-secondary {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.btn-primary {
+    background-color: #ff6347; /* Primary brand color */
+    color: white;
+    font-weight: bold;
+}
+
+.search-and-tabs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 300px;
+}
+
+.status-tabs .tab {
+    padding: 8px 15px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.status-tabs .tab.active {
+    background-color: #ddd;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Invoice Table Styling */
+.invoice-list-card {
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    overflow: hidden; /* To handle potential table overflow */
+}
+
+.invoice-list-card table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.invoice-list-card thead th {
+    text-align: left;
+    padding: 15px;
+    font-weight: bold;
+    font-size: 0.9em;
+    color: #777;
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #eee;
+}
+
+.invoice-list-card tbody td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95em;
+    color: #333;
+}
+
+.invoice-list-card tbody tr:hover {
+    background-color: #fcfcfc;
+}
+
+.status {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.status.overdue {
+    background-color: #fce4e4; /* Light red */
+    color: #cc0000; /* Dark red */
+}
+
+.status.paid {
+    background-color: #e6f7e9; /* Light green */
+    color: #27a644; /* Dark green */
+}
+
+.status.pending {
+    background-color: #fff8e1; /* Light yellow */
+    color: #ff9800; /* Dark orange */
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    font-size: 0.9em;
+    color: #777;
+}
+
+.pagination button {
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    margin-left: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
 /* General Layout & Colors */
 .dashboard-container {
     display: flex;
@@ -6,6 +139,7 @@
     background-color: #f7f7f7; /* Light background for the main content */
 }
 
+/* Sidebar Styling */
 .sidebar {
     width: 250px;
     background-color: white;
