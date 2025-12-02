@@ -18,6 +18,7 @@ export class InvoiceSettingsComponent implements OnInit {
   settingsForm!: FormGroup;
   activeItem = 'Settings';
   navTitle: string = 'Settings';
+  loading: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -60,22 +61,35 @@ export class InvoiceSettingsComponent implements OnInit {
   }
 
   getInvoiceSettings() {
+    this.loading = true;
     this.invoiceSettingsService.getInvoiceSettings().subscribe({
       next: (data) => {
+        this.loading = false;
         this.settingsForm.patchValue(data);
         console.log('Form patched:', this.settingsForm.value);
       },
       error: (error) => {
+        this.loading = false;
         console.error('Error fetching invoice settings:', error);
       }
     });
   }
 
   createOrUpdateInvoiceSettings() {
+         this.loading = true;
     const settings = this.settingsForm.value;
     this.invoiceSettingsService.createOrUpdateInvoiceSettings(settings).subscribe({
-      next: (res) => console.log('Settings saved successfully', res),
-      error: (err) => console.error('Error saving settings', err)
+      next: (res) => {
+        this.loading = false;
+        console.log('Response from server:', res);
+        this.settingsForm.patchValue(res);
+        console.log('Settings saved successfully', res);
+      },
+      error: (err) => {
+        this.loading = false;
+        console.error('Error saving settings', err);
+          
+      }
     });
   }
 
