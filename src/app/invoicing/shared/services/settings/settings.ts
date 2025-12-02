@@ -17,6 +17,10 @@ export class InvoiceSettingsService {
 
 
     }
+
+    createOrUpdateInvoiceSettings(settings: InvoiceSettings): Observable<InvoiceSettings> {
+      return this.http.post<InvoiceSettings>(this.apiUrl + 'createOrUpdateInvoiceSettings', settings);
+    }
   
   
 }

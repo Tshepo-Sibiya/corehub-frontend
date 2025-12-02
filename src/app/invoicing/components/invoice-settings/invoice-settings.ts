@@ -37,13 +37,13 @@ export class InvoiceSettingsComponent implements OnInit {
       companyName: [''],
       registrationNumber: [''],
       vatNumber: [''],
-      vatRate: [''],
+      vatRate: [],
       emailAddress: [''],
       telephone: [''],
       invoiceNotes: [''],
 
       // Bank
-      accountNumber: [''],
+      accountNumber: [],
       bankName: [''],
       branchName: [''],
       branchCode: [''],
@@ -55,7 +55,7 @@ export class InvoiceSettingsComponent implements OnInit {
       city: [''],
       province: [''],
       country: [''],
-      postalCode: ['']
+      postalCode: []
     });
   }
 
@@ -68,6 +68,14 @@ export class InvoiceSettingsComponent implements OnInit {
       error: (error) => {
         console.error('Error fetching invoice settings:', error);
       }
+    });
+  }
+
+  createOrUpdateInvoiceSettings() {
+    const settings = this.settingsForm.value;
+    this.invoiceSettingsService.createOrUpdateInvoiceSettings(settings).subscribe({
+      next: (res) => console.log('Settings saved successfully', res),
+      error: (err) => console.error('Error saving settings', err)
     });
   }
 

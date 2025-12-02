@@ -16,7 +16,7 @@
             <div class="setting-card">
                 <h3 style="font-size: 1.25rem; font-weight: 500; margin-bottom: 1rem;">User Profile Settings</h3>
 
-                <form [formGroup]="settingsForm" (ngSubmit)="onSubmit()">
+                <form [formGroup]="settingsForm" (ngSubmit)="createOrUpdateInvoiceSettings()">
 
                     <!-- Company Info -->
                     <h4 style="margin-top: 1.5rem; font-weight: 600;">Company Information</h4>
@@ -62,7 +62,7 @@
 
                     <div class="form-group">
                         <label for="accountNumber" class="form-label">Account Number</label>
-                        <input id="accountNumber" type="text" class="form-input" formControlName="accountNumber">
+                        <input id="accountNumber" type="number" class="form-input" formControlName="accountNumber">
                     </div>
 
                     <div class="form-group">
