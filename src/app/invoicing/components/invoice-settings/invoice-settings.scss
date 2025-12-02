@@ -191,3 +191,33 @@
      align-items: center;
  }
  
+ /* Apply these styles to center the main content */
+.main-content {
+    /* Step 1: Limit the maximum width of the content area for better readability */
+    max-width: 900px; /* Adjust this value as needed for your design */
+
+    /* Step 2: Use margin: 0 auto; to center the block-level element horizontally */
+    margin-left: auto;
+    margin-right: auto;
+
+    /* (Optional) Add padding to the sides to prevent content from touching the screen edges on smaller screens */
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* Optional: Center the content within the setting-card itself (e.g., if the card is narrower) */
+.setting-card {
+    /* Adjust max-width if you want the forms/content inside to be narrower than the main-content */
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Optional: Ensure the tabs are also centered if they span the full content width */
+.settings-tabs {
+    /* If it's a block-level element, setting its own max-width and margin: auto will center it */
+    max-width: 600px; /* Match the setting-card max-width for alignment */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.5rem; /* Re-add some space below the tabs */
+}

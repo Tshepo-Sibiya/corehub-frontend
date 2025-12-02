@@ -1,0 +1,23 @@
+// src/app/utils/file-utils.ts
+
+export const downloadFile = (data: BlobPart, filename: string, type: string) => {
+  const blob = new Blob([data], { type });
+  const url = window.URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  a.click();
+  window.URL.revokeObjectURL(url);
+};
+export const readFileAsText = (file: File): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      resolve(reader.result as string);
+    };
+    reader.onerror = () => {
+      reject(reader.error);
+    };
+    reader.readAsText(file);
+  });
+};

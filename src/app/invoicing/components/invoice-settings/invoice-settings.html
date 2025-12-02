@@ -1,13 +1,11 @@
 <div class="dashboard-container">
-    <!-- 1. Sidebar / Navigation -->
-    <app-nav-bar></app-nav-bar>
-    <!-- 2. Main Content Area -->
-    <div class="main-content">
+    <app-nav-bar [title]="navTitle"></app-nav-bar>
+    <div class="main-content" style="max-width: 600px; margin-left: auto; margin-right: auto; margin-bottom: 1.5rem;">
         <h2 class="text-3xl font-semibold mb-6" style="font-size: 1.875rem; font-weight: 600; margin-bottom: 1.5rem;">
             Settings</h2>
 
-        <!-- Settings Navigation Tabs -->
-        <div class="settings-tabs" id="settings-tabs">
+        <div class="settings-tabs" id="settings-tabs"
+            style="max-width: 600px; margin-left: auto; margin-right: auto; margin-bottom: 1.5rem;">
             <span class="tab active" data-tab="profile">Profile</span>
             <span class="tab" data-tab="billing">Billing</span>
             <span class="tab" data-tab="security">Security</span>
@@ -18,43 +16,114 @@
             <div class="setting-card">
                 <h3 style="font-size: 1.25rem; font-weight: 500; margin-bottom: 1rem;">User Profile Settings</h3>
 
-                <form onsubmit="event.preventDefault(); alert('Form submitted (Static Demo)');">
-                    <!-- User Name Field -->
+                <form [formGroup]="settingsForm" (ngSubmit)="onSubmit()">
+
+                    <!-- Company Info -->
+                    <h4 style="margin-top: 1.5rem; font-weight: 600;">Company Information</h4>
+
                     <div class="form-group">
-                        <label for="userName" class="form-label">Name</label>
-                        <input id="userName" type="text" value="Jane Doe" class="form-input">
-                        <!-- In a real app, validation errors would appear here -->
+                        <label for="companyName" class="form-label">Company Name</label>
+                        <input id="companyName" type="text" class="form-input" formControlName="companyName">
                     </div>
 
-                    <!-- User Email Field -->
                     <div class="form-group">
-                        <label for="userEmail" class="form-label">Email Address</label>
-                        <input id="userEmail" type="email" value="jane.doe@cakedesk.io" class="form-input">
+                        <label for="registrationNumber" class="form-label">Registration Number</label>
+                        <input id="registrationNumber" type="text" class="form-input"
+                            formControlName="registrationNumber">
                     </div>
 
-                    <!-- Notifications Toggle -->
-                    <div class="form-group" style="display: flex; align-items: center; margin-top: 1rem;">
-                        <input id="notificationsEnabled" type="checkbox" checked class="form-checkbox">
-                        <label for="notificationsEnabled" class="form-label"
-                            style="margin-bottom: 0; margin-left: 0.75rem;">Enable Notifications</label>
+                    <div class="form-group">
+                        <label for="vatNumber" class="form-label">VAT Number</label>
+                        <input id="vatNumber" type="text" class="form-input" formControlName="vatNumber">
                     </div>
 
-                    <!-- Currency Dropdown -->
                     <div class="form-group">
-                        <label for="currency" class="form-label">Default Currency</label>
-                        <select id="currency" class="form-input">
-                            <option value="EUR" selected>Euro (€)</option>
-                            <option value="USD">US Dollar ($)</option>
-                            <option value="GBP">Pound Sterling (£)</option>
-                        </select>
+                        <label for="vatRate" class="form-label">VAT Rate (%)</label>
+                        <input id="vatRate" type="number" class="form-input" formControlName="vatRate">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="emailAddress" class="form-label">Email Address</label>
+                        <input id="emailAddress" type="email" class="form-input" formControlName="emailAddress">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telephone" class="form-label">Telephone</label>
+                        <input id="telephone" type="text" class="form-input" formControlName="telephone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="invoiceNotes" class="form-label">Invoice Notes</label>
+                        <textarea id="invoiceNotes" class="form-input" formControlName="invoiceNotes"></textarea>
+                    </div>
+
+                    <!-- Bank Details -->
+                    <h4 style="margin-top: 1.5rem; font-weight: 600;">Bank Details</h4>
+
+                    <div class="form-group">
+                        <label for="accountNumber" class="form-label">Account Number</label>
+                        <input id="accountNumber" type="text" class="form-input" formControlName="accountNumber">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bankName" class="form-label">Bank Name</label>
+                        <input id="bankName" type="text" class="form-input" formControlName="bankName">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="branchName" class="form-label">Branch Name</label>
+                        <input id="branchName" type="text" class="form-input" formControlName="branchName">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="branchCode" class="form-label">Branch Code</label>
+                        <input id="branchCode" type="text" class="form-input" formControlName="branchCode">
+                    </div>
+
+                    <!-- Address Details -->
+                    <h4 style="margin-top: 1.5rem; font-weight: 600;">Address Details</h4>
+
+                    <div class="form-group">
+                        <label for="addressLineOne" class="form-label">Address Line 1</label>
+                        <input id="addressLineOne" type="text" class="form-input" formControlName="addressLineOne">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="addressLineTwo" class="form-label">Address Line 2</label>
+                        <input id="addressLineTwo" type="text" class="form-input" formControlName="addressLineTwo">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="suburb" class="form-label">Suburb</label>
+                        <input id="suburb" type="text" class="form-input" formControlName="suburb">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="city" class="form-label">City</label>
+                        <input id="city" type="text" class="form-input" formControlName="city">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="province" class="form-label">Province</label>
+                        <input id="province" type="text" class="form-input" formControlName="province">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="country" class="form-label">Country</label>
+                        <input id="country" type="text" class="form-input" formControlName="country">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="postalCode" class="form-label">Postal Code</label>
+                        <input id="postalCode" type="number" class="form-input" formControlName="postalCode">
                     </div>
 
                     <div class="save-area">
-                        <button type="submit" class="btn btn-primary">
-                            Save Changes
-                        </button>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
                     </div>
                 </form>
+
+
             </div>
         </div>
 

@@ -42,7 +42,7 @@ export class Login {
     if (this.loginForm.valid) {
       this.isLoading = true;
       const { email, password } = this.loginForm.value;
-      timer(5000) // wait 5 seconds before making the API call
+      timer(1000) // wait 5 seconds before making the API call
         .pipe(
           switchMap(() => this.userServices.login(email, password)),
           finalize(() => {

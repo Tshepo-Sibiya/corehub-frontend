@@ -1,6 +1,6 @@
 <div class="dashboard-container">
 
-    <app-nav-bar></app-nav-bar>
+    <app-nav-bar [title]="navTitle"></app-nav-bar>
     <div class="main-content">
         <header>
             <h2>Overview</h2>
@@ -26,15 +26,15 @@
                 <h3>This Month</h3>
                 <div class="value-row">
                     <div class="value-item">
-                        <strong>€10,215.00</strong>
+                        <strong>{{formatCurrency(10215.00)}}</strong>
                         <span>Invoiced</span>
                     </div>
                     <div class="value-item">
-                        <strong>€0.00</strong>
+                        <strong>{{formatCurrency(0.00)}}</strong>
                         <span>VAT</span>
                     </div>
                     <div class="value-item">
-                        <strong>€10,215.00</strong>
+                        <strong>{{formatCurrency(10215.00)}}</strong>
                         <span>Total</span>
                     </div>
                 </div>
@@ -44,15 +44,15 @@
                 <h3>Last Year</h3>
                 <div class="value-row">
                     <div class="value-item">
-                        <strong>€55,136.00</strong>
+                        <strong>{{formatCurrency(55136.00)}}</strong>
                         <span>Invoiced</span>
                     </div>
                     <div class="value-item">
-                        <strong>€970.71</strong>
+                        <strong>{{formatCurrency(970.71)}}</strong>
                         <span>VAT</span>
                     </div>
                     <div class="value-item">
-                        <strong>€56,106.71</strong>
+                        <strong>{{formatCurrency(56.106.71)}}</strong>
                         <span>Total</span>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
             </div>
 
             <div class="list-card unpaid-invoices">
-                <h3>4 Unpaid Invoices (€16,479.60)</h3>
+                <h3>4 Unpaid Invoices ({{formatCurrency(16.479.60)}})</h3>
                 <div class="invoice-item">
                     <span>Vogt UG <small>17 days</small></span>
                     <div class="right-aligned">

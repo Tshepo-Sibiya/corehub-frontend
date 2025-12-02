@@ -1,10 +1,74 @@
 <body class="d-flex flex-column min-vh-100">
-  <header>
-    <div class="text-center mb-1">
-      <br> <br>
-      <h1 class="fw-bold">Core Hub</h1>
+  <header class="header-container">
+    <div class="header-left">
+      <a href="#" routerLink="/" aria-label="Home">
+        <img src="assets/logo-red.png" alt="logo" style="height:90px; width:auto; object-fit:contain; margin-right:0.5rem;">
+      </a>
     </div>
+
+    <div class="header-right">
+      <span style="color:#000;font-weight: bolder;">Welcome back&nbsp;<span style="font-weight:300;">Tshepo
+          Sibiya</span></span>&nbsp;
+      <button class="btn logout-btn">Logout</button>
+    </div>
+
+
   </header>
+
+  <style>
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: white;
+      color: #fff;
+
+
+      margin-top: 20px;
+
+    }
+
+    .header-container h1 {
+      font-size: 2rem;
+      margin: 0;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: #000;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .user-name {
+      font-weight: 500;
+      font-size: 1rem;
+      color: #000;
+    }
+
+    .logout-btn {
+      padding: 0.5rem 1rem;
+      background-color: #ff4d4f;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .logout-btn:hover {
+      background-color: #e04344;
+    }
+  </style>
+
 
   <div class="flex-grow-1" style="padding: 2rem;">
     <router-outlet></router-outlet>

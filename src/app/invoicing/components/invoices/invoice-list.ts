@@ -1,18 +1,19 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Router, ActivatedRoute } from '@angular/router';
 import { NavigationService } from '../../../shared/services/navigation.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { NavBar } from '../../shared/components/nav-bar/nav-bar';
 
 @Component({
-  selector: 'app-invoicing-customers',
+  selector: 'app-invoice-list',
   imports: [CommonModule, NavBar],
-  templateUrl: './invoicing-customers.html',
-  styleUrl: './invoicing-customers.scss'
+  templateUrl: './invoice-list.html',
+  styleUrl: './invoice-list.scss'
 })
-export class InvoicingCustomers {
-  activeItem = 'Customers';
-  navTitle: string = 'Customers';
+export class InvoiceList {
+
+  activeItem = 'Invoices';
+  navTitle: string = 'Invoices';
   constructor(private navigationService: NavigationService, private router: Router, private route: ActivatedRoute) { }
 
   navigate(url: string): void {
@@ -22,8 +23,10 @@ export class InvoicingCustomers {
 
 
   setActive(item: string) {
+
     this.activeItem = item;
     this.navTitle = this.navTitle;
     this.router.navigate(['invoicing/' + item.toLowerCase()]);
   }
+
 }
