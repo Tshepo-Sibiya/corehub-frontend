@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { NavigationService } from './shared/services/navigation.service';
 
 @Component({
   selector: 'app-root',
@@ -9,4 +10,16 @@ import { RouterOutlet } from '@angular/router';
 })
 export class App {
   protected readonly title = signal('corehub-frontend');
+
+    constructor(
+
+    private navigationService: NavigationService,
+    private router: Router,
+    private route: ActivatedRoute,
+
+  ) { }
+
+  navigate(url: string): void {
+    this.navigationService.navigateTo(url); // Navigates to the previous route
+  }
 }

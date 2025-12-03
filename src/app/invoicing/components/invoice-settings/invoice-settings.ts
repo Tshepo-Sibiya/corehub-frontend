@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'app-invoice-settings',
   standalone: true,
-  imports: [CommonModule,NavBar, ReactiveFormsModule],
+  imports: [CommonModule, NavBar, ReactiveFormsModule],
   templateUrl: './invoice-settings.html',
   styleUrl: './invoice-settings.scss'
 })
@@ -19,6 +19,7 @@ export class InvoiceSettingsComponent implements OnInit {
   activeItem = 'Settings';
   navTitle: string = 'Settings';
   loading: boolean = false;
+  loadingError: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -26,7 +27,7 @@ export class InvoiceSettingsComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private invoiceSettingsService: InvoiceSettingsService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -65,18 +66,20 @@ export class InvoiceSettingsComponent implements OnInit {
     this.invoiceSettingsService.getInvoiceSettings().subscribe({
       next: (data) => {
         this.loading = false;
+        this.loadingError = false;
         this.settingsForm.patchValue(data);
         console.log('Form patched:', this.settingsForm.value);
       },
       error: (error) => {
         this.loading = false;
+        this.loadingError = true;
         console.error('Error fetching invoice settings:', error);
       }
     });
   }
 
   createOrUpdateInvoiceSettings() {
-         this.loading = true;
+    this.loading = true;
     const settings = this.settingsForm.value;
     this.invoiceSettingsService.createOrUpdateInvoiceSettings(settings).subscribe({
       next: (res) => {
@@ -88,7 +91,7 @@ export class InvoiceSettingsComponent implements OnInit {
       error: (err) => {
         this.loading = false;
         console.error('Error saving settings', err);
-          
+
       }
     });
   }
@@ -104,6 +107,21 @@ export class InvoiceSettingsComponent implements OnInit {
     //     error: (err) => console.error('Error saving settings', err)
     //   });
   }
+
+  logoPreview: string | null = null;
+
+  onLogoSelected(event: Event) {
+    const file = (event.target as HTMLInputElement).files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.logoPreview = reader.result as string;
+      this.settingsForm.patchValue({ logo: this.logoPreview });
+    };
+    reader.readAsDataURL(file);
+  }
+
 
   goBack() {
     this.navigationService.goBack();

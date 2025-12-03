@@ -1,6 +1,7 @@
 <div class="dashboard-container">
     <app-nav-bar [title]="navTitle"></app-nav-bar>
     <div class="main-content" style="max-width: 600px; margin-left: auto; margin-right: auto; margin-bottom: 1.5rem;">
+       
         <h2 class="text-3xl font-semibold mb-6" style="font-size: 1.875rem; font-weight: 600; margin-bottom: 1.5rem;">
             Settings</h2>
 
@@ -14,6 +15,9 @@
         <!-- Content Area - Reactive Form Sample -->
         <div id="content-profile" class="setting-content">
             <div class="setting-card">
+                 <div *ngIf="loadingError" style="background-color: red;padding: 10px; color: white; margin-bottom: 1rem;"> 
+            Error loading settings. Please try again later.
+        </div>
                 <h3 style="font-size: 1.25rem; font-weight: 500; margin-bottom: 1rem;">User Profile Settings</h3>
 
                 <div *ngIf="loading" class="text-center py-6">Loading settings...</div>
