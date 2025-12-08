@@ -21,7 +21,7 @@ export class InvoiceList implements OnInit {
   totalInvoices = 0;
   activeInvoices = 0;
   inactiveInvoices = 0;
-  
+
 
   constructor(
     private navigationService: NavigationService,
@@ -39,8 +39,9 @@ export class InvoiceList implements OnInit {
       next: (data) => {
         this.invoiceList = (data || [])
           .map(invoice => ({
+          
             invoiceNumber: invoice.invoiceNumber || '',
-            customerId: invoice.customerId || '',
+            customerName: invoice.customer.name || '',
             totalAmount: invoice.totalAmount || 0,
             invoiceItems: invoice.invoiceItems || [],
             dueDate: invoice.dueDate ? new Date(invoice.dueDate) : null,
@@ -55,9 +56,11 @@ export class InvoiceList implements OnInit {
         this.totalInvoices = this.invoiceList.length;
         this.activeInvoices = this.invoiceList.filter(i => i.status === 'Active').length;
         this.inactiveInvoices = this.invoiceList.filter(i => i.status === 'Inactive').length;
+        console.log('Invoices fetched:', this.invoiceList);
       },
       error: (err) => console.error('Error fetching invoices', err)
     });
+
   }
 
 

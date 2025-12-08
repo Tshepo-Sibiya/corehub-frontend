@@ -32,7 +32,7 @@
                 <tbody>
                     <tr *ngFor="let invoice of invoiceList; let i = index">
                         <td class="invoice-number" data-label="#">{{ invoice.invoiceNumber }}</td>
-                        <td data-label="Client">{{ invoice.customerId }}</td>
+                        <td data-label="Client">{{ invoice.customerName }}</td>
                         <td data-label="Issue Date">{{ invoice.invoiceDate | date:'MMM d, y' }}</td>
                         <td data-label="Due Date">{{ invoice.dueDate | date:'MMM d, y' }}</td>
                         <td class="amount" data-label="Amount">R {{ invoice.totalAmount | number:'1.2-2' }}</td>
