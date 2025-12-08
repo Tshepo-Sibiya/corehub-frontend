@@ -2,10 +2,30 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Launch Chrome against localhost",
+      "name": "Angular: Launch Chrome (Development)",
       "type": "chrome",
       "request": "launch",
-      "preLaunchTask": "npm: start",
+      "preLaunchTask": "npm: start:dev",
+      "url": "http://localhost:4200",
+      "webRoot": "${workspaceFolder}",
+      "sourceMaps": true,
+      "trace": true
+    },
+    {
+      "name": "Angular: Launch Chrome (Staging)",
+      "type": "chrome",
+      "request": "launch",
+      "preLaunchTask": "npm: start:staging",
+      "url": "http://localhost:4200",
+      "webRoot": "${workspaceFolder}",
+      "sourceMaps": true,
+      "trace": true
+    },
+    {
+      "name": "Angular: Launch Chrome (Production)",
+      "type": "chrome",
+      "request": "launch",
+      "preLaunchTask": "npm: start:prod",
       "url": "http://localhost:4200",
       "webRoot": "${workspaceFolder}",
       "sourceMaps": true,

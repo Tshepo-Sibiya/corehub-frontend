@@ -102,12 +102,23 @@
     color: #cc0000; /* Dark red */
 }
 
+.status.canceled {
+    background-color: #fce4e4; /* Light red */
+    color: #8a4040; /* Dark red */
+}
+
+.status.sent {
+    background-color: #fce4e4; /* Light red */
+    color: #884d4d; /* Dark red */
+}
+
+
 .status.paid {
     background-color: #e6f7e9; /* Light green */
     color: #27a644; /* Dark green */
 }
 
-.status.pending {
+.status.draft {
     background-color: #fff8e1; /* Light yellow */
     color: #ff9800; /* Dark orange */
 }

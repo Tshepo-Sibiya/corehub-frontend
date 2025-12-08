@@ -1,68 +1,40 @@
-<div class="overview-container ">
-    <div class="container my-5">
+<div class="dashboard-wrapper">
 
-        <div class="row g-4 justify-content-center">
-            <div class="col-md-12 col-lg-6 d-flex flex-column align-items-left">
-                <div style="margin-bottom: 30px;">
 
-                    <button mat-stroked-button color="warn"   (click)="navigateTo('/user')">
-                        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="logout"></mat-icon>
-                        Logout
-                    </button>
+    <app-main-nav-bar [title]="navTitle"></app-main-nav-bar>
+  <!-- Main Content -->
+  <main class="content-area">
 
-                </div>
-                <div class="w-100 mt-4">
-                    <div class="row g-3">
-                        <div class="col-6">
-                            <div class="card shadow-sm border-3 w-100 h-100" style="min-height: 180px; cursor: pointer;"
-                                (click)="navigateTo('/family-tree')">
-                                <div
-                                    class="card-body d-flex align-items-center flex-column text-center justify-content-center h-100">
-                                    <i class="bi bi-file-earmark fs-2 text-primary mb-3"></i>
-                                    <h3 class="card-title">Family Tree</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="card shadow-sm border-3 w-100 h-100" style="min-height: 180px; cursor: pointer;"
-                                (click)="navigateTo('/invoicing')">
-                                <div
-                                    class="card-body d-flex align-items-center flex-column text-center justify-content-center h-100">
-                                    <i class="bi bi-file-earmark fs-2 text-primary mb-3"></i>
-                                    <h3 class="card-title">Invoicing</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-100 mt-4">
-                    <div class="row g-3">
-                        <div class="col-6">
-                            <div class="card shadow-sm border-3 w-100 h-100" style="min-height: 180px; cursor: pointer;"
-                                (click)="navigateTo('/family-tree')">
-                                <div
-                                    class="card-body d-flex align-items-center flex-column text-center justify-content-center h-100">
-                                    <i class="bi bi-file-earmark fs-2 text-primary mb-3"></i>
-                                    <h3 class="card-title">Misc</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="card shadow-sm border-3 w-100 h-100" style="min-height: 180px; cursor: pointer;"
-                                (click)="navigateTo('/invoicing')">
-                                <div
-                                    class="card-body d-flex align-items-center flex-column text-center justify-content-center h-100">
-                                    <i class="bi bi-file-earmark fs-2 text-primary mb-3"></i>
-                                    <h3 class="card-title">Gym Buddy</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- End row with two buttons -->
+    <div class="modules-grid">
 
-            </div>
-        </div>
+      <!-- Family Tree -->
+      <div class="module-card" (click)="navigateTo('/family-tree')">
+        <i class="bi bi-diagram-3 icon"></i>
+        <h3>Family Tree</h3>
+      </div>
+
+
+      <!-- Gym Buddy -->
+      <div class="module-card" (click)="navigateTo('/gym-buddy')">
+        <i class="bi bi-heart-pulse icon"></i>
+        <h3>Gym Buddy</h3>
+      </div>
+
+      <!-- Invoicing -->
+      <div class="module-card" (click)="navigateTo('/invoicing')">
+        <i class="bi bi-receipt icon"></i>
+        <h3>Invoicing</h3>
+      </div>
+
+      <!-- Misc -->
+      <div class="module-card" (click)="navigateTo('/misc')">
+        <i class="bi bi-grid icon"></i>
+        <h3>Misc</h3>
+      </div>
+
+
     </div>
+  </main>
+
 </div>

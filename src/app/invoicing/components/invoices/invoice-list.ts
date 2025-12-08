@@ -1,32 +1,69 @@
-import { Component } from '@angular/core';
-import { NavigationService } from '../../../shared/services/navigation.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router, ActivatedRoute } from '@angular/router';
+
+import { NavigationService } from '../../../shared/services/navigation.service';
 import { NavBar } from '../../shared/components/nav-bar/nav-bar';
+import { InvoiceServices } from '../../services/services/invoices';
 
 @Component({
   selector: 'app-invoice-list',
   imports: [CommonModule, NavBar],
   templateUrl: './invoice-list.html',
-  styleUrl: './invoice-list.scss'
+  styleUrls: ['./invoice-list.scss']
 })
-export class InvoiceList {
+export class InvoiceList implements OnInit {
 
   activeItem = 'Invoices';
-  navTitle: string = 'Invoices';
-  constructor(private navigationService: NavigationService, private router: Router, private route: ActivatedRoute) { }
+  navTitle = 'Invoices';
+  invoiceList: any[] = [];
 
-  navigate(url: string): void {
-    this.navigationService.navigateTo(url); // Navigates to the previous route
+  totalInvoices = 0;
+  activeInvoices = 0;
+  inactiveInvoices = 0;
+  
+
+  constructor(
+    private navigationService: NavigationService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private invoiceServices: InvoiceServices
+  ) { }
+
+  ngOnInit(): void {
+    this.getAllInvoices();
+  }
+
+  getAllInvoices(): void {
+    this.invoiceServices.getAllInvoices().subscribe({
+      next: (data) => {
+        this.invoiceList = (data || [])
+          .map(invoice => ({
+            invoiceNumber: invoice.invoiceNumber || '',
+            customerId: invoice.customerId || '',
+            totalAmount: invoice.totalAmount || 0,
+            invoiceItems: invoice.invoiceItems || [],
+            dueDate: invoice.dueDate ? new Date(invoice.dueDate) : null,
+            invoiceDate: invoice.invoiceDate ? new Date(invoice.invoiceDate) : null,
+            status: invoice.status || 'Pending',
+            notes: invoice.notes || '',
+            id: invoice.invoiceNumber || ''
+          }))
+          .sort((a, b) => (a.invoiceDate?.getTime() ?? 0) - (b.invoiceDate?.getTime() ?? 0));
+
+        // precompute counts for tabs
+        this.totalInvoices = this.invoiceList.length;
+        this.activeInvoices = this.invoiceList.filter(i => i.status === 'Active').length;
+        this.inactiveInvoices = this.invoiceList.filter(i => i.status === 'Inactive').length;
+      },
+      error: (err) => console.error('Error fetching invoices', err)
+    });
   }
 
 
-
-  setActive(item: string) {
-
+  setActive(item: string): void {
     this.activeItem = item;
-    this.navTitle = this.navTitle;
-    this.router.navigate(['invoicing/' + item.toLowerCase()]);
+    this.navTitle = item;
+    this.router.navigate([`invoicing/${item.toLowerCase()}`]);
   }
-
 }

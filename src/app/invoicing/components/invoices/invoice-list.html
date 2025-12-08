@@ -1,22 +1,21 @@
 <div class="dashboard-container">
     <app-nav-bar [title]="navTitle"></app-nav-bar>
+
     <div class="main-content">
-         <header class="invoice-header">
-            <h2>Invoices (48)</h2>
+        <header class="invoice-header">
+            <h2>Invoices ({{ invoiceList?.length || 0 }})</h2>
             <div class="header-actions">
                 <button class="btn btn-secondary">Filter</button>
                 <button class="btn btn-primary">+ New invoice</button>
             </div>
         </header>
 
-        <div class="search-and-tabs">
-            <input type="text" placeholder="Search customers..." class="search-input">
-            <div class="status-tabs">
-                <span class="tab active">All (48)</span>
-                <span class="tab">Active (32)</span>
-                <span class="tab">Inactive (12)</span>
-            </div>
+        <div class="status-tabs">
+            <span class="tab active">All ({{ totalInvoices }})</span>
+            <span class="tab">Active ({{ activeInvoices }})</span>
+            <span class="tab">Inactive ({{ inactiveInvoices }})</span>
         </div>
+
         <div class="invoice-list-card">
             <table>
                 <thead>
@@ -31,62 +30,31 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="invoice-number" data-label="#">INV-2025-0048</td>
-                        <td data-label="Client">**Powlowski Group**</td>
-                        <td data-label="Issue Date">Oct 15, 2025</td>
-                        <td data-label="Due Date">Nov 14, 2025</td>
-                        <td class="amount" data-label="Amount">€10,215.00</td>
-                        <td data-label="Status"><span class="status overdue">Overdue</span></td>
-                        <td class="action-cell" data-label="Actions">
-                            <div class="dropdown">
-                                <button class="btn-action dropdown-toggle" type="button" id="dropdownMenuButton48"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Action
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton48">
-                                    <li><a class="dropdown-item" href="#">View details</a></li>
-                                    <li><a class="dropdown-item" href="#">Edit</a></li>
-                                    <li><a class="dropdown-item" href="#">Delete</a></li>
-                                </ul>
-                            </div>
+                    <tr *ngFor="let invoice of invoiceList; let i = index">
+                        <td class="invoice-number" data-label="#">{{ invoice.invoiceNumber }}</td>
+                        <td data-label="Client">{{ invoice.customerId }}</td>
+                        <td data-label="Issue Date">{{ invoice.invoiceDate | date:'MMM d, y' }}</td>
+                        <td data-label="Due Date">{{ invoice.dueDate | date:'MMM d, y' }}</td>
+                        <td class="amount" data-label="Amount">R {{ invoice.totalAmount | number:'1.2-2' }}</td>
+                        <td data-label="Status">
+                            <span class="status" [ngClass]="{
+                'paid': invoice.status === 'Paid',
+                'pending': invoice.status === 'Pending',
+                'draft': invoice.status === 'Draft',
+                'overdue': invoice.status === 'Overdue',
+                'canceled': invoice.status === 'Canceled',
+                'sent': invoice.status === 'Sent'
+              }">
+                                {{ invoice.status }}
+                            </span>
                         </td>
-                    </tr>
-                    <tr>
-                        <td class="invoice-number" data-label="#">INV-2025-0047</td>
-                        <td data-label="Client">Andres Lubowitz</td>
-                        <td data-label="Issue Date">Oct 01, 2025</td>
-                        <td data-label="Due Date">Oct 31, 2025</td>
-                        <td class="amount" data-label="Amount">€3,770.00</td>
-                        <td data-label="Status"><span class="status paid">Paid</span></td>
                         <td class="action-cell" data-label="Actions">
                             <div class="dropdown">
-                                <button class="btn-action dropdown-toggle" type="button" id="dropdownMenuButton47"
+                                <button class="btn-action dropdown-toggle" type="button" id="dropdownMenuButton{{i}}"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     Action
                                 </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton47">
-                                    <li><a class="dropdown-item" href="#">View details</a></li>
-                                    <li><a class="dropdown-item" href="#">Edit</a></li>
-                                    <li><a class="dropdown-item" href="#">Delete</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="invoice-number" data-label="#">INV-2025-0046</td>
-                        <td data-label="Client">**Vogt UG**</td>
-                        <td data-label="Issue Date">Sep 20, 2025</td>
-                        <td data-label="Due Date">Oct 20, 2025</td>
-                        <td class="amount" data-label="Amount">€642.60</td>
-                        <td data-label="Status"><span class="status pending">Pending</span></td>
-                        <td class="action-cell" data-label="Actions">
-                            <div class="dropdown">
-                                <button class="btn-action dropdown-toggle" type="button" id="dropdownMenuButton46"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Action
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton46">
+                                <ul class="dropdown-menu" [attr.aria-labelledby]="'dropdownMenuButton' + i">
                                     <li><a class="dropdown-item" href="#">View details</a></li>
                                     <li><a class="dropdown-item" href="#">Edit</a></li>
                                     <li><a class="dropdown-item" href="#">Delete</a></li>
@@ -96,6 +64,6 @@
                     </tr>
                 </tbody>
             </table>
-            </div>
+        </div>
     </div>
 </div>

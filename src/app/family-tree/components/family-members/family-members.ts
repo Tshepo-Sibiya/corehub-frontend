@@ -30,6 +30,7 @@ export class FamilyMembers implements OnInit {
 
   ngOnInit(): void {
     this.itemService.getFamilyMembers().subscribe({
+      
       next: (data) => {
         console.log('Fetched familyMemberModel:', data);
         // Assign data directly, ensuring birthDate is a Date object

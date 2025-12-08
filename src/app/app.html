@@ -7,12 +7,12 @@
       </a>
     </div>
 
-    <div class="header-right">
+    <div class="header-right" style="margin-bottom: 20px;">
       <span style="color:#000;font-weight: bolder;">Welcome back&nbsp;<span style="font-weight:300;">Tshepo
           Sibiya</span></span>&nbsp;
-      <button class="btn logout-btn" onclick="navigate('/')">Overview</button>
+      <button class="btn logout-btn" (click)="navigate('/overview')">Overview</button>
       
-      <button class="btn logout-btn">Logout</button>
+      <button class="btn logout-btn" (click)="navigate('/user')">Logout</button>
     </div>
 
 
