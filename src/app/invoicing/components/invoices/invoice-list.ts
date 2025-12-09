@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { NavigationService } from '../../../shared/services/navigation.service';
 import { NavBar } from '../../shared/components/nav-bar/nav-bar';
-import { InvoiceServices } from '../../services/services/invoices';
+import { InvoiceServices } from '../../services/services/invoice-services/invoices';
 
 @Component({
   selector: 'app-invoice-list',

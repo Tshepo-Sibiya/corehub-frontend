@@ -3,120 +3,94 @@
     <app-nav-bar [title]="navTitle"></app-nav-bar>
 
     <div class="main-content">
+
+        <!-- Header -->
         <header class="invoice-header">
-            <h2>Invoice Items (48)</h2>
+            <h2>Invoice Items ({{ invoiceItemsList.length }})</h2>
+
             <div class="header-actions">
                 <button class="btn btn-secondary">Filter</button>
-                <button class="btn btn-primary">+ New Item</button>
+                <button class="btn btn-primary" (click)="navigate('invoicing/items/create')">
+                    + New Item
+                </button>
             </div>
         </header>
 
+        <!-- Search + Tabs -->
         <div class="search-and-tabs">
-            <input type="text" placeholder="Search items..." class="search-input">
+
+            <input type="text" placeholder="Search items..." class="search-input" [(ngModel)]="searchTerm" />
+
             <div class="status-tabs">
-                <span class="tab active">All (48)</span>
-                <span class="tab">Available (32)</span>
-                <span class="tab">Low Stock (12)</span>
-                <span class="tab">Out of Stock (4)</span>
+                <span class="tab active">All ({{ totalCount }})</span>
+                <span class="tab">Available ({{ activeCount }})</span>
+                <span class="tab">Archived ({{ archivedCount }})</span>
             </div>
         </div>
 
+        <!-- TABLE -->
         <div class="invoice-list-card">
             <table>
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Item Name</th>
-                        <th>SKU</th>
-                     
+                        <th>Description</th>
                         <th>Unit Price</th>
-                     
+                        <th>Taxable</th>
+
                         <th>Actions</th>
                     </tr>
                 </thead>
+
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td><strong>Wireless Mouse</strong></td>
-                        <td>WM-2025-001</td>
-                     
-                        <td class="amount">€25.00</td>
+                    <tr *ngFor="let item of invoiceItemsList; let i = index">
+                        <td>{{ i + 1 }}</td>
+
+                        <td>
+                            <strong>{{ item.description }}</strong>
+                        </td>
+
+
+                        <td class="amount">R {{ item.price | number: '1.2-2' }}</td>
+                        <td>
+                            <span [class.badge-success]="item.taxable"
+                                [class.badge-danger]="!item.taxable">
+                                {{ item.taxable }}
+                            </span>
+                        </td>
+
                         <td class="action-cell">
                             <div class="dropdown">
-                                <button class="btn-action dropdown-toggle" type="button" id="dropdownMenuButton"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn-action dropdown-toggle" type="button" data-bs-toggle="dropdown">
                                     Action
                                 </button>
 
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item" href="#">View
-                                            details</a></li>
-                                    <li><a class="dropdown-item" href="#">Edit</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Delete</a>
-                                    </li>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item">View details</a></li>
+                                    <li><a class="dropdown-item">Edit</a></li>
+                                    <li><a class="dropdown-item text-danger">Delete</a></li>
                                 </ul>
                             </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Mechanical Keyboard</td>
-                        <td>MK-2025-002</td>
-                        <td class="amount">€80.00</td>
-                        <td class="action-cell">
-                            <div class="dropdown">
-                                <button class="btn-action dropdown-toggle" type="button" id="dropdownMenuButton"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Action
-                                </button>
 
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item" href="#">View
-                                            details</a></li>
-                                    <li><a class="dropdown-item" href="#">Edit</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Delete</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td><strong>HD Monitor</strong></td>
-                        <td>HDM-2025-003</td>
-                    
-                        <td class="amount">€200.00</td>
-               
-                        <td class="action-cell">
-                            <div class="dropdown">
-                                <button class="btn-action dropdown-toggle" type="button" id="dropdownMenuButton"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Action
-                                </button>
-
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item" href="#">View
-                                            details</a></li>
-                                    <li><a class="dropdown-item" href="#">Edit</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Delete</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </td>
+                    <!-- If empty -->
+                    <tr *ngIf="invoiceItemsList.length === 0">
+                        <td colspan="5" class="text-center py-3">No items found</td>
                     </tr>
                 </tbody>
             </table>
 
+            <!-- Pagination -->
             <div class="pagination">
-                <span>1-10 of 48 items</span>
+                <span>Showing {{ invoiceItemsList.length }} items</span>
+
                 <div class="page-controls">
                     <button>&lt;</button>
                     <button>&gt;</button>
                 </div>
             </div>
+
         </div>
     </div>
 </div>

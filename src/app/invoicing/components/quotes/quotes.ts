@@ -37,6 +37,7 @@ export class Quotes {
   getAllInvoices(): void {
     this.quotesServices.getAllQuotesWithCustomers().subscribe({
       next: (data) => {
+        
         this.quotesList = (data || [])
           .map(quote => ({
 

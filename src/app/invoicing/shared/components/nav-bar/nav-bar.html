@@ -1,15 +1,17 @@
 <div class="sidebar">
+  <nav class="nav-menu">
+    <ul style="list-style: none; margin: 0; padding: 0;">
+      <li *ngFor="let item of menuItems"
+          [class.active]="activeItem === item.label"
+          (click)="setActive(item.label)"
+          class="menu-item">
 
+        <!-- <mat-icon class="menu-icon">{{ item.icon }}</mat-icon> -->
+        <span>{{ item.label }}</span>
 
-    <nav class="nav-menu">
-        <ul style="list-style: none; margin: 0; padding: 0;">
-            <li *ngFor="let item of ['Overview','Customers','Invoices','Items','Quotes','Settings']" [class.active]="activeItem === item"
-                (click)="setActive(item)">
-                {{ item }}
-            </li>
-        </ul>
+      </li>
+    </ul>
+  </nav>
 
-    </nav>
-    <div class="chat-icon">
-    </div>
+  <div class="chat-icon"></div>
 </div>

@@ -99,15 +99,15 @@
  .settings-tabs .tab {
      padding: 10px 20px;
      cursor: pointer;
-     color: #777;
+     color: #002C56;
      font-weight: 500;
      border-bottom: 2px solid transparent;
      transition: color 0.2s, border-bottom-color 0.2s;
  }
 
  .settings-tabs .tab.active {
-     color: #ff6347;
-     border-bottom: 2px solid #ff6347;
+     color: #002C56;
+     border-bottom: 2px solid #002C56;
      font-weight: 600;
  }
 
@@ -167,7 +167,7 @@
 
  .btn-primary {
      padding: 10px 20px;
-     background-color: #ff6347;
+     background-color: #002C56;
      color: white;
      border: none;
      border-radius: 4px;

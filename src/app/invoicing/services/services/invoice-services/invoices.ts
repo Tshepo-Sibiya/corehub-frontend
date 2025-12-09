@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, forkJoin, map } from 'rxjs';
-import { environment } from '../../../../environments/environment';
-import { API_ENDPOINTS } from '../../../shared/constants/endpoints';
-import { Invoice } from '../../models/invoice.model';
-import { InvoiceCustomer } from '../../models/invoice-customer';
+import { environment } from '../../../../../environments/environment';
+import { API_ENDPOINTS } from '../../../../shared/constants/endpoints';
+import { Invoice } from '../../../models/invoice.model';
+import { InvoiceCustomer } from '../../../models/invoice-customer';
 
 
 @Injectable({

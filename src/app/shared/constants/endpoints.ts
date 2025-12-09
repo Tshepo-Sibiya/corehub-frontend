@@ -10,7 +10,17 @@ export const API_ENDPOINTS = {
         LIST: 'invoice/getInvoices',
         GET: (id: string) => `invoice/${id}`,
     },
-        QUOTE: {
+    INVOICEITEMS: {
+        CREATE: 'invoice-item/createInvoiceItem',
+        LIST: 'invoice-item/getInvoiceItems',
+        GET: (id: string) => `invoice/${id}`,
+    },
+    INVOICESETTINGS: {
+        CREATE: 'invoice-settings/create',
+        GETINVOICESETTINS: 'invoice-settings/getInvoiceSettingsByUserId',
+        GET: (id: string) => `invoice/${id}`,
+    },
+    QUOTE: {
         CREATE: 'quote/createQuote',
         LIST: 'quote/getQuotes',
         GET: (id: string) => `invoice/${id}`,
