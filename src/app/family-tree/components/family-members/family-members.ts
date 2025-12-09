@@ -3,7 +3,7 @@ import { FamilyTreeService } from '../../services/family-tree-services';
 import { FamilyMemberModel } from '../../models/family-member.model';
 import { CommonModule } from '@angular/common';
 import { Location } from '@angular/common';
-import { NavigationService } from '../../../shared/services/navigation.service';
+import { NavigationService } from '../../../shared/services/navigation-service/navigation.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';

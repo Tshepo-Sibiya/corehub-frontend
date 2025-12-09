@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NavigationService } from '../../../shared/services/navigation.service';
+import { NavigationService } from '../../../shared/services/navigation-service/navigation.service';
 import { NavBar } from '../../shared/components/nav-bar/nav-bar';
 import { QuotesServices } from '../../services/quotes/quotes';
 
@@ -37,7 +37,7 @@ export class Quotes {
   getAllInvoices(): void {
     this.quotesServices.getAllQuotesWithCustomers().subscribe({
       next: (data) => {
-        
+
         this.quotesList = (data || [])
           .map(quote => ({
 

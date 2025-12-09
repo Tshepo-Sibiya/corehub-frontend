@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
-import { NavigationService } from '../../../../shared/services/navigation.service';
+import { NavigationService } from '../../../../shared/services/navigation-service/navigation.service';
 import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs/operators';
 import { MatIconModule } from '@angular/material/icon';

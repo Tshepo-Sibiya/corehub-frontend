@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InvoiceSettingsComponent } from './invoice-settings';
+import { LogoutWarning } from './logout-warning';
 
-describe('InvoiceSettings', () => {
-  let component: InvoiceSettingsComponent;
-  let fixture: ComponentFixture<InvoiceSettingsComponent>;
+describe('LogoutWarning', () => {
+  let component: LogoutWarning;
+  let fixture: ComponentFixture<LogoutWarning>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [InvoiceSettingsComponent]
+      imports: [LogoutWarning]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(InvoiceSettingsComponent);
+    fixture = TestBed.createComponent(LogoutWarning);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

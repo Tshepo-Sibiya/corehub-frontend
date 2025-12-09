@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavigationService } from '../../../shared/services/navigation.service';
+import { NavigationService } from '../../../shared/services/navigation-service/navigation.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavBar } from '../../shared/components/nav-bar/nav-bar';
 import { formatCurrency } from '../../shared/utils/currency-utils';

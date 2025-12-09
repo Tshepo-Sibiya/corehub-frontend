@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NavigationService } from '../../../shared/services/navigation.service';
+import { NavigationService } from '../../../shared/services/navigation-service/navigation.service';
 import { NavBar } from '../../shared/components/nav-bar/nav-bar';
 import { InvoiceSettingsService } from '../../shared/services/settings/settings';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';

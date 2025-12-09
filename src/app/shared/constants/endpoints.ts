@@ -16,8 +16,8 @@ export const API_ENDPOINTS = {
         GET: (id: string) => `invoice/${id}`,
     },
     INVOICESETTINGS: {
-        CREATE: 'invoice-settings/create',
-        GETINVOICESETTINS: 'invoice-settings/getInvoiceSettingsByUserId',
+        CREATE: 'invoice-settings/createOrUpdateInvoiceSettings',
+        GETINVOICESETTINGS: 'invoice-settings/getInvoiceSettingsByUserId',
         GET: (id: string) => `invoice/${id}`,
     },
     QUOTE: {

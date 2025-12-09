@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NavigationService } from '../../services/navigation.service';
+import { NavigationService } from '../../services/navigation-service/navigation.service';
 import { CommonModule } from '@angular/common';
 
 @Component({

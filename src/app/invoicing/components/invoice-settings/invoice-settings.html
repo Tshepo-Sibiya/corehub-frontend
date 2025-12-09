@@ -18,14 +18,13 @@
                  <div *ngIf="loadingError" style="background-color: #002C56;padding: 10px; color: white; margin-bottom: 1rem;"> 
             Error loading settings. Please try again later.
         </div>
-                <h3 style="font-size: 1.25rem; font-weight: 500; margin-bottom: 1rem;">User Profile Settings</h3>
-
+             
                 <div *ngIf="loading" class="text-center py-6">Loading settings...</div>
                 <form *ngIf="!loading" [formGroup]="settingsForm" (ngSubmit)="createOrUpdateInvoiceSettings()">
 
                     <!-- Company Info -->
                     <h4 style="margin-top: 1.5rem; font-weight: 600;">Company Information</h4>
-
+<br>
                     <div class="form-group">
                         <label for="companyName" class="form-label">Company Name</label>
                         <input id="companyName" type="text" class="form-input" formControlName="companyName">
@@ -63,7 +62,7 @@
                     </div>
 
                     <!-- Bank Details -->
-                    <h4 style="margin-top: 1.5rem; font-weight: 600;">Bank Details</h4>
+                    <h4 style="margin-top: 1.5rem; font-weight: 600;">Bank Details</h4><br>
 
                     <div class="form-group">
                         <label for="accountNumber" class="form-label">Account Number</label>
@@ -86,7 +85,7 @@
                     </div>
 
                     <!-- Address Details -->
-                    <h4 style="margin-top: 1.5rem; font-weight: 600;">Address Details</h4>
+                    <h4 style="margin-top: 1.5rem; font-weight: 600;">Address Details</h4><br>
 
                     <div class="form-group">
                         <label for="addressLineOne" class="form-label">Address Line 1</label>

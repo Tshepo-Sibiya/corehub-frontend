@@ -17,13 +17,13 @@ export class InvoiceSettingsService {
 
   getInvoiceSettings(): Observable<InvoiceSettings> {
 
-    return this.http.get<InvoiceSettings>(this.apiUrl + API_ENDPOINTS.INVOICESETTINGS.GETINVOICESETTINS);
+    return this.http.get<InvoiceSettings>(this.apiUrl + API_ENDPOINTS.INVOICESETTINGS.GETINVOICESETTINGS);
 
 
   }
 
   createOrUpdateInvoiceSettings(settings: InvoiceSettings): Observable<InvoiceSettings> {
-    return this.http.post<InvoiceSettings>(this.apiUrl + 'createOrUpdateInvoiceSettings', settings);
+    return this.http.post<InvoiceSettings>(this.apiUrl +  API_ENDPOINTS.INVOICESETTINGS.CREATE, settings);
   }
 
 

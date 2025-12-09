@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FamilyTreeService } from '../../services/family-tree-services';
-import { NavigationService } from '../../../shared/services/navigation.service';
+import { NavigationService } from '../../../shared/services/navigation-service/navigation.service';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
