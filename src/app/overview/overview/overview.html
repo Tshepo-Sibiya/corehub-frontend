@@ -1,38 +1,74 @@
 <div class="dashboard-wrapper">
 
+  <app-main-nav-bar [title]="navTitle"></app-main-nav-bar>
 
-    <app-main-nav-bar [title]="navTitle"></app-main-nav-bar>
   <!-- Main Content -->
   <main class="content-area">
-
 
     <div class="modules-grid">
 
       <!-- Family Tree -->
       <div class="module-card" (click)="navigateTo('/family-tree')">
         <i class="bi bi-diagram-3 icon"></i>
-        <h3>Family Tree</h3>
+        <h3 class="card-title">Family Tree</h3><br>
+        <p class="card-description">View and manage your family relationships and history.</p>
       </div>
-
 
       <!-- Gym Buddy -->
       <div class="module-card" (click)="navigateTo('/gym-buddy')">
         <i class="bi bi-heart-pulse icon"></i>
-        <h3>Gym Buddy</h3>
+        <h3 class="card-title">Gym Buddy</h3><br>
+        <p class="card-description">Track workouts, set fitness goals, and stay motivated.</p>
       </div>
 
       <!-- Invoicing -->
       <div class="module-card" (click)="navigateTo('/invoicing')">
         <i class="bi bi-receipt icon"></i>
-        <h3>Invoicing</h3>
+        <h3 class="card-title">Invoicing</h3><br>
+        <p class="card-description">Create, manage, and track invoices for your business.</p>
+      </div>
+
+      <!-- File Storage -->
+      <div class="module-card" (click)="navigateTo('/file-storage')">
+        <i class="bi bi-folder2 icon"></i>
+        <h3 class="card-title">File Storage</h3><br>
+        <p class="card-description">Securely store and access your important documents.</p>
+      </div>
+
+      <!-- Capture Data -->
+      <div class="module-card" (click)="navigateTo('/capture-data')">
+        <i class="bi bi-journal-text icon"></i>
+        <h3 class="card-title">Capture Data</h3><br>
+        <p class="card-description">Easily collect and organize data from various sources.</p>
+      </div>
+
+      <!-- Inventory -->
+      <div class="module-card" (click)="navigateTo('/inventory')">
+        <i class="bi bi-box-seam icon"></i>
+        <h3 class="card-title">Inventory</h3><br>
+        <p class="card-description">Manage stock, track products, and streamline operations.</p>
       </div>
 
       <!-- Misc -->
       <div class="module-card" (click)="navigateTo('/misc')">
         <i class="bi bi-grid icon"></i>
-        <h3>Misc</h3>
+        <h3 class="card-title">Misc</h3><br>
+        <p class="card-description">Access other tools and utilities in one place.</p>
       </div>
 
+      <!-- Payroll -->
+      <div class="module-card" (click)="navigateTo('/payroll')">
+        <i class="bi bi-cash-stack icon"></i>
+        <h3 class="card-title">Payroll</h3><br>
+        <p class="card-description">Manage salaries, benefits, and employee payments efficiently.</p>
+      </div>
+
+      <!-- Manage Contacts -->
+      <div class="module-card" (click)="navigateTo('/manage-contacts')">
+        <i class="bi bi-people icon"></i>
+        <h3 class="card-title">Manage Contacts</h3><br>
+        <p class="card-description">Store, update, and organize your personal and business contacts.</p>
+      </div>
 
     </div>
   </main>
