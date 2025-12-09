@@ -9,12 +9,20 @@
                 <button class="btn btn-primary">+ New invoice</button>
             </div>
         </header>
+        <div class="search-and-tabs">
+            <input type="text" placeholder="Search invoices..." class="search-input">
+            <div class="status-tabs">
+                <span class="tab active">All ({{ totalInvoices }})</span>
+                <span class="tab">Active ({{ activeInvoices }})</span>
+                <span class="tab">Inactive ({{ inactiveInvoices }})</span> -->
+            </div>
+        </div>
 
-        <div class="status-tabs">
+        <!-- <div class="status-tabs">
             <span class="tab active">All ({{ totalInvoices }})</span>
             <span class="tab">Active ({{ activeInvoices }})</span>
             <span class="tab">Inactive ({{ inactiveInvoices }})</span>
-        </div>
+        </div> -->
 
         <div class="invoice-list-card">
             <table>

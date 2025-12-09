@@ -10,6 +10,11 @@ export const API_ENDPOINTS = {
         LIST: 'invoice/getInvoices',
         GET: (id: string) => `invoice/${id}`,
     },
+        QUOTE: {
+        CREATE: 'quote/createQuote',
+        LIST: 'quote/getQuotes',
+        GET: (id: string) => `invoice/${id}`,
+    },
     CUSTOMER: {
         CREATE: 'customer/createCustomer',
         LIST: 'customer/getUserCustomers',
