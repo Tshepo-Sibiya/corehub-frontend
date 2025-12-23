@@ -6,6 +6,7 @@ import { InvoicingCustomers } from './components/invoicing-customers/invoicing-c
 import { Items } from './components/items/items';
 import { Quotes } from './components/quotes/quotes';
 import { InvoiceSettingsComponent } from './components/invoice-settings/invoice-settings';
+import { CreateCustomer } from './components/invoicing-customers/create-customer/create-customer';
 
 
 
@@ -18,6 +19,7 @@ export const INVOICING_ROUTES: Routes = [
     { path: 'customers', component: InvoicingCustomers },
     { path: 'items', component: Items },
     { path: 'quotes', component: Quotes },
+    { path: 'create-customer', component: CreateCustomer }
     // { path: 'add-new-family-member', component: AddFamilyMember },
 
     // { path: 'clients', component: ClientsComponent },

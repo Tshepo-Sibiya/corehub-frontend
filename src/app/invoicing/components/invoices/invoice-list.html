@@ -3,7 +3,7 @@
 
     <div class="main-content">
         <header class="invoice-header">
-            <h2>Invoices ({{ invoiceList?.length || 0 }})</h2>
+            <h2>Invoices ({{ invoiceList.length || 0 }})</h2>
             <div class="header-actions">
                 <button class="btn btn-secondary">Filter</button>
                 <button class="btn btn-primary">+ New invoice</button>
@@ -63,9 +63,9 @@
                                     Action
                                 </button>
                                 <ul class="dropdown-menu" [attr.aria-labelledby]="'dropdownMenuButton' + i">
-                                    <li><a class="dropdown-item" href="#">View details</a></li>
-                                    <li><a class="dropdown-item" href="#">Edit</a></li>
-                                    <li><a class="dropdown-item" href="#">Delete</a></li>
+                                    <li><a class="dropdown-item" (click)="navigateTo('create-customer')">View details</a></li>
+                                    <li><a class="dropdown-item" (click)="navigateTo('details')">Edit</a></li>
+                                    <li><a class="dropdown-item" (click)="navigateTo('details')">Delete</a></li>
                                 </ul>
                             </div>
                         </td>

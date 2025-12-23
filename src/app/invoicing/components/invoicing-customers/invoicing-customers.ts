@@ -36,8 +36,9 @@ export class InvoicingCustomers implements OnInit {
     this.getAllCustomers();
   }
 
-  navigate(url: string): void {
-    this.navigationService.navigateTo(url);
+
+  navigateTo(item: string): void {
+     this.router.navigate(['invoicing/' + item.toLowerCase()]);
   }
 
   getAllCustomers(): void {

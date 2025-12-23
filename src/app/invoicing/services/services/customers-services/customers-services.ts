@@ -18,4 +18,10 @@ export class CustomersServices {
   getAllCustomers(): Observable<InvoiceCustomer[]> {
     return this.http.get<InvoiceCustomer[]>(this.apiUrl + API_ENDPOINTS.CUSTOMER.LIST);
   }
+
+  createCustomer(payload: InvoiceCustomer): Observable<InvoiceCustomer> {
+    return this.http.post<InvoiceCustomer>(this.apiUrl + API_ENDPOINTS.CUSTOMER.CREATE, payload);
+  }
+
+
 }

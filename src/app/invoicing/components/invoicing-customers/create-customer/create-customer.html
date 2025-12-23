@@ -1,0 +1,34 @@
+<div class="dashboard-container">
+
+    <app-nav-bar [title]="navTitle"></app-nav-bar>
+
+    <div class="main-content">
+        <header class="invoice-header">
+            <h2>Create new customer </h2>
+   
+        </header>
+     <div id="content-profile" class="setting-content"> </div>
+ <form *ngIf="!loading" [formGroup]="createCustomerForm" (ngSubmit)="onSubmit()">
+
+                    <!-- Company Info -->
+                    <h4 style="margin-top: 1.5rem; font-weight: 600;">Company Information</h4>
+<br>
+                    <div class="form-group">
+                        <label for="companyName" class="form-label">Company Name</label>
+                        <input id="companyName" type="text" class="form-input" formControlName="companyName">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="registrationNumber" class="form-label">Registration Number</label>
+                        <input id="registrationNumber" type="text" class="form-input"
+                            formControlName="registrationNumber">
+                    </div>
+
+                  
+
+                    <div class="save-area">
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </form>
+    </div>
+</div>

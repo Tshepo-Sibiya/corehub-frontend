@@ -63,6 +63,10 @@ export class InvoiceList implements OnInit {
 
   }
 
+  navigateTo(item: string): void {
+     this.router.navigate(['invoicing/' + item.toLowerCase()]);
+  }
+
 
   setActive(item: string): void {
     this.activeItem = item;
